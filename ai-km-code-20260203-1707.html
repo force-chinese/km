@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 核心研究與知識管理方法論：雙軌架構</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        .gradient-header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .tab-active { border-bottom: 2px solid #3b82f6; color: #1e40af; font-weight: 700; }
+        .tab-inactive { color: #64748b; font-weight: 500; }
+        .tab-inactive:hover { color: #334155; }
+        
+        /* SVG Animations */
+        .dash-flow { stroke-dasharray: 8; animation: dash 20s linear infinite; }
+        @keyframes dash { to { stroke-dashoffset: -100; } }
+        .rotate-slow { animation: rotate 30s linear infinite; transform-origin: center; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .pulse-node { animation: pulse 3s infinite; }
+        @keyframes pulse { 0% { r: 5; opacity: 1; } 50% { r: 8; opacity: 0.6; } 100% { r: 5; opacity: 1; } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation / Tab Switcher -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo / Title -->
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-900 text-white text-xs font-bold px-2 py-1 rounded">Methodology</div>
+                    <span class="font-bold text-lg tracking-tight text-slate-900 hidden md:block">Dual-Track System</span>
+                </div>
+
+                <!-- Language Tabs -->
+                <div class="flex space-x-8">
+                    <button onclick="switchTab('zh')" id="tab-zh" class="tab-active py-4 px-2 transition-colors duration-200 flex items-center gap-2">
+                        <span>繁體中文</span>
+                    </button>
+                    <button onclick="switchTab('en')" id="tab-en" class="tab-inactive py-4 px-2 transition-colors duration-200 flex items-center gap-2">
+                        <span>English</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 py-12">
+
+        <!-- ========================================== -->
+        <!-- CHINESE CONTENT (Default)                  -->
+        <!-- ========================================== -->
+        <div id="content-zh" class="block space-y-20">
+
+            <!-- Header -->
+            <header class="text-center space-y-6 py-10">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold border border-blue-100">
+                    AI 核心研究與知識管理方法論
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                    雙軌架構<br><span class="text-indigo-600">Dual-Track System</span>
+                </h1>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                    從「找資料」到「封閉迴圈知識管理」。<br>這是一套為政策研究與專業顧問設計的標準化產出流程。
+                </p>
+            </header>
+
+            <!-- 1. Overview -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                <div class="mb-8 border-l-4 border-blue-600 pl-4">
+                    <h2 class="text-2xl font-bold text-slate-900">一、總覽：為什麼需要分流？</h2>
+                    <p class="text-slate-500 mt-1">上下游協作，而非工具競爭</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="space-y-4 text-slate-700">
+                        <p>在 AI 時代，最常見的錯誤是試圖用同一個工具完成「找資料」與「做研究」。這導致了嚴重的幻覺與知識破碎。</p>
+                        <ul class="space-y-2 list-disc pl-5">
+                            <li><strong>Type 1 (搜尋型 AI)</strong>：負責「發散」，像獵人一樣廣泛蒐集外部證據。</li>
+                            <li><strong>Type 2 (NotebookLM)</strong>：負責「收斂」，像科學家一樣在實驗室內嚴謹推理。</li>
+                        </ul>
+                    </div>
+                    <!-- Diagram 1: Overview -->
+                    <div class="bg-slate-50 rounded-xl p-4 flex items-center justify-center border border-slate-100">
+                        <svg viewBox="0 0 400 150" class="w-full h-auto">
+                            <!-- Type 1 Nodes -->
+                            <g fill="#0ea5e9" opacity="0.8">
+                                <circle cx="50" cy="40" r="5" />
+                                <circle cx="30" cy="80" r="5" />
+                                <circle cx="70" cy="110" r="5" />
+                                <circle cx="80" cy="30" r="5" />
+                            </g>
+                            <text x="50" y="140" text-anchor="middle" font-size="12" fill="#0369a1" font-weight="bold">Type 1: 發散搜尋</text>
+
+                            <!-- Arrow -->
+                            <path d="M 100 75 L 180 75" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow-zh)" stroke-dasharray="4" />
+                            <text x="140" y="65" text-anchor="middle" font-size="10" fill="#64748b">匯入原料</text>
+
+                            <!-- Type 2 Box -->
+                            <rect x="200" y="25" width="150" height="100" rx="10" fill="#fff" stroke="#4f46e5" stroke-width="2" />
+                            <circle cx="275" cy="75" r="30" fill="#eef2ff" stroke="#4f46e5" stroke-width="1" />
+                            <text x="275" y="80" text-anchor="middle" font-size="20">🔬</text>
+                            <text x="275" y="140" text-anchor="middle" font-size="12" fill="#4338ca" font-weight="bold">Type 2: 封閉研究</text>
+
+                            <defs>
+                                <marker id="arrow-zh" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Type 1 -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                <div class="mb-8 border-l-4 border-teal-500 pl-4">
+                    <h2 class="text-2xl font-bold text-slate-900">二、Type 1：搜尋型 AI (Scout / Hunter)</h2>
+                    <p class="text-teal-600 mt-1">外部資料探索・快速查證・不負責最終結論</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="font-bold text-lg mb-4 text-slate-800">四種核心工具分工</h3>
+                        <div class="space-y-4">
+                            <div class="bg-teal-50 p-4 rounded-lg border border-teal-100">
+                                <span class="text-xs font-bold bg-teal-200 text-teal-800 px-2 py-0.5 rounded">1. Google Search AI</span>
+                                <p class="text-sm mt-1 text-teal-900"><strong>基礎層：</strong>免費、即時、優先顯示官方來源。適合初步確認關鍵字。</p>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg border border-teal-100">
+                                <span class="text-xs font-bold bg-teal-200 text-teal-800 px-2 py-0.5 rounded">2. Google Deep Research</span>
+                                <p class="text-sm mt-1 text-teal-900"><strong>掃描層：</strong>針對政策全貌、跨年度報告進行深度掃描，不遺漏長尾資訊。</p>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg border border-teal-100">
+                                <span class="text-xs font-bold bg-teal-200 text-teal-800 px-2 py-0.5 rounded">3. Perplexity</span>
+                                <p class="text-sm mt-1 text-teal-900"><strong>精準層：</strong>單點數字驗證（如：2024年補助金額），鎖定具體來源與頁數。</p>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg border border-teal-100">
+                                <span class="text-xs font-bold bg-teal-200 text-teal-800 px-2 py-0.5 rounded">4. Felo (或其他中文 AI)</span>
+                                <p class="text-sm mt-1 text-teal-900"><strong>轉譯層：</strong>擅長處理中文語意，將艱澀的政策語言轉譯為企劃用詞。</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-xs text-slate-500">
+                            ⚠️ <strong>風險提示：</strong> 此階段資訊是碎片化的，缺乏研究軌跡，不可直接用於決策。
+                        </div>
+                    </div>
+
+                    <!-- Diagram 2: Type 1 Flow -->
+                    <div class="flex items-center justify-center bg-slate-50 rounded-xl p-6">
+                        <svg viewBox="0 0 300 400" class="w-full h-auto">
+                            <rect x="50" y="20" width="200" height="60" rx="8" fill="#fff" stroke="#0ea5e9" stroke-width="2"/>
+                            <text x="150" y="55" text-anchor="middle" font-size="14" font-weight="bold" fill="#0369a1">搜尋任務啟動</text>
+                            
+                            <path d="M 150 80 L 150 110" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow-zh)"/>
+
+                            <path d="M 150 110 L 80 140 M 150 110 L 220 140" stroke="#cbd5e1" stroke-width="2" />
+                            
+                            <circle cx="80" cy="160" r="20" fill="#fff" stroke="#14b8a6" stroke-width="2"/>
+                            <text x="80" y="165" text-anchor="middle" font-size="10">掃描</text>
+                            
+                            <circle cx="220" cy="160" r="20" fill="#fff" stroke="#f59e0b" stroke-width="2"/>
+                            <text x="220" y="165" text-anchor="middle" font-size="10">驗證</text>
+
+                            <path d="M 80 180 L 150 220 M 220 180 L 150 220" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow-zh)"/>
+
+                            <rect x="75" y="220" width="150" height="50" rx="25" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="4"/>
+                            <text x="150" y="250" text-anchor="middle" font-size="12" fill="#0369a1">碎片化證據 (Links)</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Type 2 (Core) -->
+            <section class="space-y-12">
+                <div class="bg-indigo-900 text-white p-8 rounded-2xl shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4">三、Type 2：NotebookLM 封閉迴圈 KM 系統</h2>
+                    <p class="text-indigo-200 text-lg leading-relaxed border-l-4 border-indigo-400 pl-4">
+                        NotebookLM 是「研究主系統 (Research Primary System)」，<br>
+                        不是搜尋工具，也不是聊天工具。
+                    </p>
+                </div>
+
+                <!-- 3-1 Closed Loop -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-indigo-900 mb-6 border-b pb-2">3-1. 核心概念：封閉迴圈 (Closed-loop KM)</h3>
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="text-slate-700 space-y-4">
+                            <p>研究不是一次性的問答，而是一個<strong>可回放、可收斂、可升級</strong>的循環系統。</p>
+                            <ul class="space-y-2 text-sm bg-indigo-50 p-4 rounded-lg">
+                                <li>🔄 <strong>可回放：</strong>保留每一輪的思考與對話紀錄。</li>
+                                <li>📉 <strong>可收斂：</strong>隨著迴圈進行，雜訊被排除，來源更純淨。</li>
+                                <li>🚀 <strong>可升級：</strong>產出的結論可變成下一輪的輸入。</li>
+                            </ul>
+                            <p class="font-bold text-indigo-700">「Type 2 是一個會自我進化的 KM 系統。」</p>
+                        </div>
+                        <!-- Diagram 3: Closed Loop -->
+                        <div class="flex justify-center">
+                            <svg viewBox="0 0 300 300" class="w-64 h-64">
+                                <circle cx="150" cy="150" r="100" fill="none" stroke="#e0e7ff" stroke-width="20" />
+                                <path d="M 150 50 A 100 100 0 1 1 149 50" fill="none" stroke="#6366f1" stroke-width="4" stroke-dasharray="10" class="rotate-slow"/>
+                                
+                                <circle cx="150" cy="50" r="20" fill="#fff" stroke="#4f46e5" stroke-width="2" class="pulse-node"/>
+                                <text x="150" y="55" text-anchor="middle" font-size="16">📥</text>
+                                <text x="150" y="25" text-anchor="middle" font-size="10" fill="#4f46e5" font-weight="bold">匯入</text>
+
+                                <circle cx="250" cy="150" r="20" fill="#fff" stroke="#4f46e5" stroke-width="2"/>
+                                <text x="250" y="155" text-anchor="middle" font-size="16">⚙️</text>
+                                <text x="280" y="155" text-anchor="start" font-size="10" fill="#4f46e5" font-weight="bold">推理</text>
+
+                                <circle cx="150" cy="250" r="20" fill="#fff" stroke="#4f46e5" stroke-width="2"/>
+                                <text x="150" y="255" text-anchor="middle" font-size="16">📄</text>
+                                <text x="150" y="285" text-anchor="middle" font-size="10" fill="#4f46e5" font-weight="bold">產出</text>
+
+                                <circle cx="50" cy="150" r="20" fill="#fff" stroke="#10b981" stroke-width="2"/>
+                                <text x="50" y="155" text-anchor="middle" font-size="16">🔄</text>
+                                <text x="20" y="155" text-anchor="end" font-size="10" fill="#10b981" font-weight="bold">再匯入</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-2 Data Strategy -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-indigo-900 mb-6 border-b pb-2">3-2. 三層資料來源策略</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="text-2xl mb-2">🔍</div>
+                            <h4 class="font-bold text-slate-900 mb-2">1. 內建 Deep Research</h4>
+                            <p class="text-sm text-slate-600">利用系統自動推薦的來源。優點是研究軌跡可追溯，且可直接點回原文檢查。</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="text-2xl mb-2">📂</div>
+                            <h4 class="font-bold text-slate-900 mb-2">2. 人工手工匯入</h4>
+                            <p class="text-sm text-slate-600">來自 Type 1 搜尋的結果。用於補充特定年度、部會文件或觀點。與系統推薦並存。</p>
+                        </div>
+                        <div class="p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+                            <div class="text-2xl mb-2">🏰</div>
+                            <h4 class="font-bold text-indigo-900 mb-2">3. 專案級來源池</h4>
+                            <p class="text-sm text-indigo-800">當前兩者匯整後，成為「唯一真理來源 (Single Source of Truth)」。後續推理嚴禁跳出此池。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-3 Boundary Control -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-indigo-900 mb-6 border-b pb-2">3-3. 邊界控制：來源可勾選、可排除</h3>
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 space-y-4">
+                            <p class="text-slate-700">NotebookLM 允許你勾選/取消勾選來源。這不是單純的 UX 功能，而是<strong>「研究邊界控制 (Research Boundary Control)」</strong>。</p>
+                            <div class="bg-amber-50 p-3 rounded text-sm text-amber-800 border border-amber-100">
+                                💡 <strong>觀念：</strong>被排除（Unchecked）的資料不代表是錯的，只是「本次推理不適用」。資料仍在池中備用。
+                            </div>
+                        </div>
+                        <!-- Diagram 4: Selection UI -->
+                        <div class="w-64 bg-white border border-slate-300 rounded-lg p-4 shadow-sm select-none">
+                            <div class="text-xs font-bold text-slate-400 mb-2">SOURCES</div>
+                            <div class="flex items-center gap-2 mb-2 p-2 bg-blue-50 rounded border border-blue-200">
+                                <div class="w-4 h-4 bg-blue-500 rounded flex items-center justify-center text-white text-xs">✓</div>
+                                <div class="text-sm font-bold text-slate-800">2024_政策.pdf</div>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2 p-2 bg-blue-50 rounded border border-blue-200">
+                                <div class="w-4 h-4 bg-blue-500 rounded flex items-center justify-center text-white text-xs">✓</div>
+                                <div class="text-sm font-bold text-slate-800">2024_數據.csv</div>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 opacity-50 grayscale">
+                                <div class="w-4 h-4 border border-slate-400 rounded"></div>
+                                <div class="text-sm text-slate-500 line-through">2018_舊規.pdf</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-4 & 3-5 Combined -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-indigo-900 mb-4">3-4. 對話 → 產出 → 再來源</h3>
+                        <p class="text-sm text-slate-600 mb-4">你在 NotebookLM 中的思考對話，應轉存為筆記（Note），並重新匯入成為來源。讓思考資產化。</p>
+                        <!-- Diagram 5: Flow -->
+                        <svg viewBox="0 0 300 100" class="w-full h-16">
+                            <rect x="10" y="30" width="60" height="40" rx="4" fill="#eef2ff" stroke="#6366f1"/>
+                            <text x="40" y="55" text-anchor="middle" font-size="10" fill="#4338ca">對話</text>
+                            
+                            <path d="M 80 50 L 110 50" stroke="#94a3b8" marker-end="url(#arrow-zh)"/>
+                            
+                            <rect x="120" y="30" width="60" height="40" rx="4" fill="#fff" stroke="#0ea5e9"/>
+                            <text x="150" y="55" text-anchor="middle" font-size="10" fill="#0284c7">轉存摘要</text>
+                            
+                            <path d="M 190 50 L 220 50" stroke="#94a3b8" marker-end="url(#arrow-zh)"/>
+                            
+                            <rect x="230" y="30" width="60" height="40" rx="4" fill="#ecfdf5" stroke="#10b981"/>
+                            <text x="260" y="55" text-anchor="middle" font-size="10" fill="#047857">新來源</text>
+                        </svg>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-indigo-900 mb-4">3-5. 包裝過的指令</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">🤖 操作型指令 (給 AI)</h4>
+                                <p class="text-xs text-slate-500">明確控制輸出格式。例如：「請只比對文件 A 與 B 的數字差異，並輸出 Markdown 表格。」</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">🧠 研究指引 (給 真人)</h4>
+                                <p class="text-xs text-slate-500">說明研究目的。例如：「這一步是為了確認數字一致性，請檢查下方引註連結。」</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. KM Value -->
+            <section class="bg-gradient-to-r from-slate-100 to-white p-8 rounded-2xl border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">四、為什麼這是 KM，而不是工具技巧？</h2>
+                <div class="flex gap-4 items-start">
+                    <div class="text-4xl">🏛️</div>
+                    <div class="space-y-2">
+                        <p class="text-slate-700"><strong>KM 的核心價值在於「資產化」：</strong></p>
+                        <p class="text-slate-600">傳統研究中，新人接手專案往往要從零開始找資料。但在雙軌架構下，新人接手的是一個<strong>「已收斂的來源池」</strong>與<strong>「前人的思考軌跡」</strong>。</p>
+                        <p class="text-slate-600">研究成果變得可轉移、可教學、可驗證，這才是企業知識管理的真諦。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Comparison -->
+            <section class="py-4">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">五、Type 1 × Type 2 協作總結</h2>
+                <div class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
+                    <table class="w-full text-left bg-white">
+                        <thead class="bg-slate-50 text-slate-500 uppercase text-xs">
+                            <tr>
+                                <th class="px-6 py-4">面向</th>
+                                <th class="px-6 py-4 text-blue-600">Type 1 (搜尋型 AI)</th>
+                                <th class="px-6 py-4 text-indigo-600">Type 2 (NotebookLM)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-sm">
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-700">思維模式</td>
+                                <td class="px-6 py-4">發散 (Divergent)</td>
+                                <td class="px-6 py-4">收斂 (Convergent)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-700">核心動作</td>
+                                <td class="px-6 py-4">搜尋 (Search)</td>
+                                <td class="px-6 py-4">研究 (Research)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-700">系統屬性</td>
+                                <td class="px-6 py-4">開放系統 (接觸外部雜訊)</td>
+                                <td class="px-6 py-4">封閉迴圈 (自我迭代淨化)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-700">產出價值</td>
+                                <td class="px-6 py-4">原料 (Raw Material)</td>
+                                <td class="px-6 py-4">知識資產 (Knowledge Asset)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ENGLISH CONTENT (Concept Equivalent)       -->
+        <!-- ========================================== -->
+        <div id="content-en" class="hidden space-y-20">
+
+            <!-- Header -->
+            <header class="text-center space-y-6 py-10">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold border border-blue-100">
+                    AI Core Research & KM Methodology
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                    Dual-Track System<br><span class="text-indigo-600">Architecture & Philosophy</span>
+                </h1>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                    Moving from "Information Retrieval" to "Closed-Loop Knowledge Management".<br>A standardized framework for policy researchers and consultants.
+                </p>
+            </header>
+
+            <!-- 1. Overview -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                <div class="mb-8 border-l-4 border-blue-600 pl-4">
+                    <h2 class="text-2xl font-bold text-slate-900">1. Overview: The Dual-Track System</h2>
+                    <p class="text-slate-500 mt-1">Upstream and Downstream Collaboration, Not Competition.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="space-y-4 text-slate-700">
+                        <p>The most common pitfall in the AI era is using a single tool for both "Finding Data" and "Synthesizing Research." This leads to hallucinations and fragmented knowledge.</p>
+                        <ul class="space-y-2 list-disc pl-5">
+                            <li><strong>Type 1 (Search AI)</strong>: The Scout/Hunter. Responsible for <strong>divergent</strong> discovery of external evidence.</li>
+                            <li><strong>Type 2 (NotebookLM)</strong>: The Lab. Responsible for <strong>convergent</strong> reasoning within a controlled environment.</li>
+                        </ul>
+                    </div>
+                    <!-- Diagram 1: Overview (Same Visual) -->
+                    <div class="bg-slate-50 rounded-xl p-4 flex items-center justify-center border border-slate-100">
+                         <svg viewBox="0 0 400 150" class="w-full h-auto">
+                            <!-- Type 1 Nodes -->
+                            <g fill="#0ea5e9" opacity="0.8">
+                                <circle cx="50" cy="40" r="5" />
+                                <circle cx="30" cy="80" r="5" />
+                                <circle cx="70" cy="110" r="5" />
+                                <circle cx="80" cy="30" r="5" />
+                            </g>
+                            <text x="50" y="140" text-anchor="middle" font-size="12" fill="#0369a1" font-weight="bold">Type 1: Divergent</text>
+
+                            <!-- Arrow -->
+                            <path d="M 100 75 L 180 75" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow-en)" stroke-dasharray="4" />
+                            <text x="140" y="65" text-anchor="middle" font-size="10" fill="#64748b">Import Data</text>
+
+                            <!-- Type 2 Box -->
+                            <rect x="200" y="25" width="150" height="100" rx="10" fill="#fff" stroke="#4f46e5" stroke-width="2" />
+                            <circle cx="275" cy="75" r="30" fill="#eef2ff" stroke="#4f46e5" stroke-width="1" />
+                            <text x="275" y="80" text-anchor="middle" font-size="20">🔬</text>
+                            <text x="275" y="140" text-anchor="middle" font-size="12" fill="#4338ca" font-weight="bold">Type 2: Closed-Loop</text>
+
+                            <defs>
+                                <marker id="arrow-en" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Type 1 -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                <div class="mb-8 border-l-4 border-teal-500 pl-4">
+                    <h2 class="text-2xl font-bold text-slate-900">2. Type 1: Search AI (Scout / Hunter)</h2>
+                    <p class="text-teal-600 mt-1">External Exploration • Rapid Verification • No Final Conclusions</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="font-bold text-lg mb-4 text-slate-800">Role Allocation of 4 Key Tools</h3>
+                        <div class="space-y-4">
+                            <div class="bg-teal-50 p-4 rounded-lg border border-teal-100">
+                                <span class="text-xs font-bold bg-teal-200 text-teal-800 px-2 py-0.5 rounded">1. Google Search AI</span>
+                                <p class="text-sm mt-1 text-teal-900"><strong>Baseline:</strong> Free, real-time, official-source prioritized. Best for initial keyword scoping.</p>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg border border-teal-100">
+                                <span class="text-xs font-bold bg-teal-200 text-teal-800 px-2 py-0.5 rounded">2. Google Deep Research</span>
+                                <p class="text-sm mt-1 text-teal-900"><strong>Scanner:</strong> Deep scanning for policy landscapes and multi-year reports. Finds the "long-tail" documents.</p>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg border border-teal-100">
+                                <span class="text-xs font-bold bg-teal-200 text-teal-800 px-2 py-0.5 rounded">3. Perplexity</span>
+                                <p class="text-sm mt-1 text-teal-900"><strong>Precision:</strong> Pinpoint verification of specific numbers (e.g., 2024 Subsidy Amount) and source validation.</p>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg border border-teal-100">
+                                <span class="text-xs font-bold bg-teal-200 text-teal-800 px-2 py-0.5 rounded">4. Felo (or Language Specialist AI)</span>
+                                <p class="text-sm mt-1 text-teal-900"><strong>Translator:</strong> Specialized in converting bureaucratic policy language into structured business terms.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-xs text-slate-500">
+                            ⚠️ <strong>Risk Warning:</strong> Information here is fragmented and lacks an audit trail. Do not use for final decision-making.
+                        </div>
+                    </div>
+
+                    <!-- Diagram 2: Type 1 Flow -->
+                    <div class="flex items-center justify-center bg-slate-50 rounded-xl p-6">
+                        <svg viewBox="0 0 300 400" class="w-full h-auto">
+                            <rect x="50" y="20" width="200" height="60" rx="8" fill="#fff" stroke="#0ea5e9" stroke-width="2"/>
+                            <text x="150" y="55" text-anchor="middle" font-size="14" font-weight="bold" fill="#0369a1">Initiate Search</text>
+                            
+                            <path d="M 150 80 L 150 110" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow-en)"/>
+
+                            <path d="M 150 110 L 80 140 M 150 110 L 220 140" stroke="#cbd5e1" stroke-width="2" />
+                            
+                            <circle cx="80" cy="160" r="20" fill="#fff" stroke="#14b8a6" stroke-width="2"/>
+                            <text x="80" y="165" text-anchor="middle" font-size="10">Scan</text>
+                            
+                            <circle cx="220" cy="160" r="20" fill="#fff" stroke="#f59e0b" stroke-width="2"/>
+                            <text x="220" y="165" text-anchor="middle" font-size="10">Verify</text>
+
+                            <path d="M 80 180 L 150 220 M 220 180 L 150 220" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow-en)"/>
+
+                            <rect x="75" y="220" width="150" height="50" rx="25" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="4"/>
+                            <text x="150" y="250" text-anchor="middle" font-size="12" fill="#0369a1">Fragmented Evidence</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Type 2 (Core) -->
+            <section class="space-y-12">
+                <div class="bg-indigo-900 text-white p-8 rounded-2xl shadow-lg">
+                    <h2 class="text-3xl font-bold mb-4">3. Type 2: NotebookLM Closed-Loop KM</h2>
+                    <p class="text-indigo-200 text-lg leading-relaxed border-l-4 border-indigo-400 pl-4">
+                        NotebookLM is the "Research Primary System,"<br>
+                        not a search engine, and not a chatbot.
+                    </p>
+                </div>
+
+                <!-- 3-1 Closed Loop -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-indigo-900 mb-6 border-b pb-2">3-1. Core Concept: Closed-Loop KM</h3>
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="text-slate-700 space-y-4">
+                            <p>Research is not a one-off Q&A session. It is a <strong>replayable, convergent, and upgradable</strong> cyclical system.</p>
+                            <ul class="space-y-2 text-sm bg-indigo-50 p-4 rounded-lg">
+                                <li>🔄 <strong>Replayable:</strong> Preserves the reasoning and dialogue trail of every iteration.</li>
+                                <li>📉 <strong>Convergent:</strong> Noise is eliminated, and sources become cleaner with every loop.</li>
+                                <li>🚀 <strong>Upgradable:</strong> Conclusions from one cycle become inputs for the next.</li>
+                            </ul>
+                            <p class="font-bold text-indigo-700">"Type 2 is a self-evolving Knowledge Management system."</p>
+                        </div>
+                        <!-- Diagram 3: Closed Loop -->
+                        <div class="flex justify-center">
+                             <svg viewBox="0 0 300 300" class="w-64 h-64">
+                                <circle cx="150" cy="150" r="100" fill="none" stroke="#e0e7ff" stroke-width="20" />
+                                <path d="M 150 50 A 100 100 0 1 1 149 50" fill="none" stroke="#6366f1" stroke-width="4" stroke-dasharray="10" class="rotate-slow"/>
+                                
+                                <circle cx="150" cy="50" r="20" fill="#fff" stroke="#4f46e5" stroke-width="2" class="pulse-node"/>
+                                <text x="150" y="55" text-anchor="middle" font-size="16">📥</text>
+                                <text x="150" y="25" text-anchor="middle" font-size="10" fill="#4f46e5" font-weight="bold">Import</text>
+
+                                <circle cx="250" cy="150" r="20" fill="#fff" stroke="#4f46e5" stroke-width="2"/>
+                                <text x="250" y="155" text-anchor="middle" font-size="16">⚙️</text>
+                                <text x="280" y="155" text-anchor="start" font-size="10" fill="#4f46e5" font-weight="bold">Analyze</text>
+
+                                <circle cx="150" cy="250" r="20" fill="#fff" stroke="#4f46e5" stroke-width="2"/>
+                                <text x="150" y="255" text-anchor="middle" font-size="16">📄</text>
+                                <text x="150" y="285" text-anchor="middle" font-size="10" fill="#4f46e5" font-weight="bold">Output</text>
+
+                                <circle cx="50" cy="150" r="20" fill="#fff" stroke="#10b981" stroke-width="2"/>
+                                <text x="50" y="155" text-anchor="middle" font-size="16">🔄</text>
+                                <text x="20" y="155" text-anchor="end" font-size="10" fill="#10b981" font-weight="bold">Re-Import</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-2 Data Strategy -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-indigo-900 mb-6 border-b pb-2">3-2. Three-Layer Data Strategy</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="text-2xl mb-2">🔍</div>
+                            <h4 class="font-bold text-slate-900 mb-2">1. Built-in Deep Research</h4>
+                            <p class="text-sm text-slate-600">Uses system-recommended sources. Advantages: Traceable research path and direct links to original documents.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="text-2xl mb-2">📂</div>
+                            <h4 class="font-bold text-slate-900 mb-2">2. Manual Import</h4>
+                            <p class="text-sm text-slate-600">Inputs from Type 1 Search. Used to supplement specific years, ministry reports, or diverse viewpoints. Co-exists with built-in sources.</p>
+                        </div>
+                        <div class="p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+                            <div class="text-2xl mb-2">🏰</div>
+                            <h4 class="font-bold text-indigo-900 mb-2">3. Project Source Pool</h4>
+                            <p class="text-sm text-indigo-800">The aggregation of the above. Becomes the <strong>Single Source of Truth</strong>. Subsequent reasoning must stay within this pool.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-3 Boundary Control -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-indigo-900 mb-6 border-b pb-2">3-3. Boundary Control: Selection & Exclusion</h3>
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 space-y-4">
+                            <p class="text-slate-700">NotebookLM allows you to check/uncheck sources. This is not just a UX feature, it is <strong>"Research Boundary Control."</strong></p>
+                            <div class="bg-amber-50 p-3 rounded text-sm text-amber-800 border border-amber-100">
+                                💡 <strong>Concept:</strong> "Unchecked" data isn't necessarily wrong, it's just "not applicable for this specific reasoning cycle."
+                            </div>
+                        </div>
+                        <!-- Diagram 4 (Same Visual) -->
+                         <div class="w-64 bg-white border border-slate-300 rounded-lg p-4 shadow-sm select-none">
+                            <div class="text-xs font-bold text-slate-400 mb-2">SOURCES</div>
+                            <div class="flex items-center gap-2 mb-2 p-2 bg-blue-50 rounded border border-blue-200">
+                                <div class="w-4 h-4 bg-blue-500 rounded flex items-center justify-center text-white text-xs">✓</div>
+                                <div class="text-sm font-bold text-slate-800">2024_Policy.pdf</div>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2 p-2 bg-blue-50 rounded border border-blue-200">
+                                <div class="w-4 h-4 bg-blue-500 rounded flex items-center justify-center text-white text-xs">✓</div>
+                                <div class="text-sm font-bold text-slate-800">2024_Data.csv</div>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 opacity-50 grayscale">
+                                <div class="w-4 h-4 border border-slate-400 rounded"></div>
+                                <div class="text-sm text-slate-500 line-through">2018_Legacy.pdf</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-4 & 3-5 Combined -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-indigo-900 mb-4">3-4. Dialogue → Asset → Re-import</h3>
+                        <p class="text-sm text-slate-600 mb-4">Your reasoning dialogue in NotebookLM should be saved as a Note and re-imported as a source. Assetize your thinking.</p>
+                        <!-- Diagram 5: Flow (Same Visual) -->
+                         <svg viewBox="0 0 300 100" class="w-full h-16">
+                            <rect x="10" y="30" width="60" height="40" rx="4" fill="#eef2ff" stroke="#6366f1"/>
+                            <text x="40" y="55" text-anchor="middle" font-size="10" fill="#4338ca">Dialogue</text>
+                            
+                            <path d="M 80 50 L 110 50" stroke="#94a3b8" marker-end="url(#arrow-en)"/>
+                            
+                            <rect x="120" y="30" width="60" height="40" rx="4" fill="#fff" stroke="#0ea5e9"/>
+                            <text x="150" y="55" text-anchor="middle" font-size="10" fill="#0284c7">Save Note</text>
+                            
+                            <path d="M 190 50 L 220 50" stroke="#94a3b8" marker-end="url(#arrow-en)"/>
+                            
+                            <rect x="230" y="30" width="60" height="40" rx="4" fill="#ecfdf5" stroke="#10b981"/>
+                            <text x="260" y="55" text-anchor="middle" font-size="10" fill="#047857">New Source</text>
+                        </svg>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-indigo-900 mb-4">3-5. Instruction Packaging</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">🤖 Operational Instruction (For AI)</h4>
+                                <p class="text-xs text-slate-500">Controls format. E.g., "Compare numerical differences between Doc A and Doc B only. Output as Markdown table."</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">🧠 Research Guidelines (For Humans)</h4>
+                                <p class="text-xs text-slate-500">Explains intent. E.g., "This step verifies numerical consistency. Please check the citations below."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. KM Value -->
+            <section class="bg-gradient-to-r from-slate-100 to-white p-8 rounded-2xl border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">4. Why is this KM, not just tooling?</h2>
+                <div class="flex gap-4 items-start">
+                    <div class="text-4xl">🏛️</div>
+                    <div class="space-y-2">
+                        <p class="text-slate-700"><strong>The core value of KM is "Assetization":</strong></p>
+                        <p class="text-slate-600">In traditional research, new team members start from scratch. In the Dual-Track system, they inherit a <strong>"Converged Source Pool"</strong> and <strong>"Previous Reasoning Trails"</strong>.</p>
+                        <p class="text-slate-600">Research outcomes become transferable, teachable, and verifiable. This is the essence of Knowledge Management.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Comparison -->
+            <section class="py-4">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">5. Type 1 × Type 2 Collaboration Summary</h2>
+                <div class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
+                    <table class="w-full text-left bg-white">
+                        <thead class="bg-slate-50 text-slate-500 uppercase text-xs">
+                            <tr>
+                                <th class="px-6 py-4">Dimension</th>
+                                <th class="px-6 py-4 text-blue-600">Type 1 (Search AI)</th>
+                                <th class="px-6 py-4 text-indigo-600">Type 2 (NotebookLM)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-sm">
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-700">Mindset</td>
+                                <td class="px-6 py-4">Divergent</td>
+                                <td class="px-6 py-4">Convergent</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-700">Core Action</td>
+                                <td class="px-6 py-4">Search</td>
+                                <td class="px-6 py-4">Research</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-700">System Nature</td>
+                                <td class="px-6 py-4">Open System (Exposed to noise)</td>
+                                <td class="px-6 py-4">Closed Loop (Self-purifying)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-700">Output Value</td>
+                                <td class="px-6 py-4">Raw Material</td>
+                                <td class="px-6 py-4">Knowledge Asset</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-20 text-center text-slate-400 text-sm space-y-2 pb-10">
+            <p>&copy; Force Cheng × FALO（Formosa AI Life Outlook）</p>
+            <p>本內容為研究方法與知識管理（KM）之工具應用說明，非特定政策立場或法律建議。</p>
+            <p class="text-xs opacity-60">Last Update: 2026/02/03</p>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript for Tabs -->
+    <script>
+        function switchTab(lang) {
+            const contentZh = document.getElementById('content-zh');
+            const contentEn = document.getElementById('content-en');
+            const tabZh = document.getElementById('tab-zh');
+            const tabEn = document.getElementById('tab-en');
+
+            if (lang === 'zh') {
+                contentZh.classList.remove('hidden');
+                contentEn.classList.add('hidden');
+                
+                tabZh.classList.add('tab-active');
+                tabZh.classList.remove('tab-inactive');
+                tabEn.classList.add('tab-inactive');
+                tabEn.classList.remove('tab-active');
+            } else {
+                contentZh.classList.add('hidden');
+                contentEn.classList.remove('hidden');
+
+                tabEn.classList.add('tab-active');
+                tabEn.classList.remove('tab-inactive');
+                tabZh.classList.add('tab-inactive');
+                tabZh.classList.remove('tab-active');
+            }
+        }
+    </script>
+</body>
+</html>
